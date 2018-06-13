@@ -26,6 +26,7 @@ jobs:
       - run:
           name: Build and test
           command: |
+            source ~/miniconda/bin/activate root
             conda build .conf/conda
             conda build --python 3.6 .conf/conda
         
@@ -33,6 +34,7 @@ jobs:
           name: Upload packages
           command: |
               source ~/.bashrc
+              source ~/miniconda/bin/activate root
               upload_or_check_non_existence ./conf/conda spectralDNS --channel main
               export CONDA_PY=36
               upload_or_check_non_existence ./conf/conda spectralDNS --channel main
